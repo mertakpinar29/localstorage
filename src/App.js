@@ -17,7 +17,7 @@ function App() {
         if(query===''){
           // checking if favorites array is empty or does not exist
           if(localStorage.getItem('favorites')==='[]' || !localStorage.getItem('favorites')){
-            localStorage.setItem('favorites', '[]')
+            localStorage.setItem('favorites','[]')
             const result = await axios(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=344d40df0c8cc373141c1dc321fae9cf&hash=${hash}`)
             console.log(result.data.data.results)
             setItems(result.data.data.results)
@@ -27,7 +27,6 @@ function App() {
             setItems(favorite)
             setLoading(false)
           }
-          
           
         }else{
           const result = await axios(`http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=1&apikey=344d40df0c8cc373141c1dc321fae9cf&hash=${hash}`)
